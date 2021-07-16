@@ -106,7 +106,7 @@ async def help(ctx):
     b2_start = Button(style=ButtonStyle.green, label="join", emoji="💽") # not in use pls ignore
     b3_disconnect = Button(style=ButtonStyle.red, label="Disconnect", emoji="🔌")
     b4_radio_stop = Button(style=ButtonStyle.grey, label="Stop the Radio", emoji="📻")
-    b5_radio_start = Button(style=ButtonStyle.green, label="Starte das Radio",emoji="📻")
+    b5_radio_start = Button(style=ButtonStyle.green, label="Start the Radio",emoji="📻")
     embed = discord.Embed(color=0x4e4040, title=f"Menu for Waitingroom",
                            description=f"> ***Prefix*** : `{data['prefix']}`")
     embed.add_field(name=f"`help` or `menu`", value=f"Shows all commands and aliases.", inline=False)
@@ -151,7 +151,7 @@ async def help(ctx):
                 components = []
             )
             await ctx.invoke(stop)
-        if res.component.label == "Starte das Radio":
+        if res.component.label == "Start the Radio":
             await res.respond(
                 type=7,
                 components = []
