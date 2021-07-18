@@ -2,7 +2,8 @@
 
 simple to use waitingroom bot but you need ffmpeg installed. fill out the bot_config.json file
 
-# Please leave a reaction on Discord that would be nice!✅ / 🆗
+# Please leave a reaction on Discord that would be nice!
+- ✅ / 🆗
 
 # Help
 
