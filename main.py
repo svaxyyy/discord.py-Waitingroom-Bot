@@ -201,19 +201,31 @@ async def radio(ctx, url: str = ''):
         SelectOption(
             label="Hits 2021",
             value="Listen to the Hits of 2021.",
-            description="Listen to the Hits of 2021!",
+            description="Listen to the `Hits of 2021`!",
             emoji="🥳"
         ),
         SelectOption(
             label="US Rap only",
             value="Listen to a Radio which is plaing US Rap only.",
-            description="Listen to a Radio which is plaing US Rap only!",
+            description="Listen to a Radio which is plaing `US Rap` only!",
             emoji="🎵"
         ),
         SelectOption(
             label="Chillhop",
             value="Listen to the Chillhop Radio.",
-            description="Listen to the Chillhop Radio!",
+            description="Listen to the `Chillhop` Radio!",
+            emoji="💫"
+        ),
+        SelectOption(
+            label="ilovemusic",
+            value="Listen to the ilovemusic Radio.",
+            description="Listen to the offical `ilovemusic` Radio!",
+            emoji="🎼"
+        ),
+        SelectOption(
+            label="Greatest Hits",
+            value="Listen to the Greatest Hits Radio.",
+            description="Listen to the `Greatest Hits` Radio!",
             emoji="💫"
         )
     ])])
@@ -261,6 +273,32 @@ async def radio(ctx, url: str = ''):
                 player = await channel.connect()
 
                 player.play(FFmpegPCMAudio('https://streams.ilovemusic.de/iloveradio17.mp3'))
+
+            if label == "ilovemusic":
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    ephemeral=False,
+                    embed=em3
+                )
+
+                channel = client.get_channel(setupdata["channel-ids"])
+                
+                player = await channel.connect()
+
+                player.play(FFmpegPCMAudio('https://streams.ilovemusic.de/iloveradio1.mp3'))
+
+            if label == "Greatest Hits":
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    ephemeral=False,
+                    embed=em3
+                )
+
+                channel = client.get_channel(setupdata["channel-ids"])
+                
+                player = await channel.connect()
+
+                player.play(FFmpegPCMAudio('https://streams.ilovemusic.de/iloveradio16.mp3'))
         
         except discord.NotFound:
             print("error!")
