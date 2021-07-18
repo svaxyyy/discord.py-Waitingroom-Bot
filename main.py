@@ -192,9 +192,15 @@ async def radio(ctx, url: str = ''):
         {"radiourl" : "https://streams.ilovemusic.de/iloveradio13.mp3", "type" : "US Rap only"}]
 
     em = Embed(title="Radio📻", description="Choose the Radio you want to listen!")
-    em1 = Embed(title="Hits 2021", description="You are now listening to the Hits of 2021")
-    em2 = Embed(title="US Rap only", description="You are now listening to US Rap only")
-    em3 = Embed(title="Chillhop", description="You are now listening to Chillhop radio")
+    em1 = Embed(title="Hits 2021", description="You are now listening to the `Hits of 2021`")
+    em2 = Embed(title="US Rap only", description="You are now listening to `US Rap` only")
+    em3 = Embed(title="Chillhop", description="You are now listening to `Chillhop` radio")
+    em4 = Embed(title="ilovemusic", description="You are now listening to `ilovemusic` radio")
+    em5 = Embed(title="Greatest Hits", description="You are now listening to `Greatest Hits` radio")
+    em6 = Embed(title="Hardstyle", description="You are now listening to `Hardstyle` radio")
+    em7 = Embed(title="Music & Chill", description="You are now listening to `Music & Chill` radio")
+    em8 = Embed(title="X-Mas", description="You are now listening to `X-Mas` radio")
+    em9 = Embed(title="Trashpop", description="You are now listening to `Trashpop` radio")
 
     await ctx.send(embed=em,
     components=[Select(placeholder="Choose your Radio!", options=[
@@ -223,10 +229,34 @@ async def radio(ctx, url: str = ''):
             emoji="🎼"
         ),
         SelectOption(
+            label="Hardstyle",
+            value="Listen to the Hardstyle Radio.",
+            description="Listen to the `Hardstyle` Radio!",
+            emoji="⛲"
+        ),
+        SelectOption(
+            label="Music & Chill",
+            value="Listen to the Music & Chill Radio.",
+            description="Listen to the `Music & Chill` Radio!",
+            emoji="🐔"
+        ),
+        SelectOption(
+            label="X-Mas",
+            value="Listen to the X-Mas Radio.",
+            description="Listen to the `X-Mas` Radio!",
+            emoji="🎅"
+        ),
+        SelectOption(
+            label="Trashpop",
+            value="Listen to the Trashpop Radio.",
+            description="Listen to the `Trashpop` Radio!",
+            emoji="🔫"
+        ),
+        SelectOption(
             label="Greatest Hits",
             value="Listen to the Greatest Hits Radio.",
             description="Listen to the `Greatest Hits` Radio!",
-            emoji="💫"
+            emoji="💮"
         )
     ])])
     while True:
@@ -278,7 +308,7 @@ async def radio(ctx, url: str = ''):
                 await res.respond(
                     type=InteractionType.ChannelMessageWithSource,
                     ephemeral=False,
-                    embed=em3
+                    embed=em4
                 )
 
                 channel = client.get_channel(setupdata["channel-ids"])
@@ -291,7 +321,7 @@ async def radio(ctx, url: str = ''):
                 await res.respond(
                     type=InteractionType.ChannelMessageWithSource,
                     ephemeral=False,
-                    embed=em3
+                    embed=em5
                 )
 
                 channel = client.get_channel(setupdata["channel-ids"])
@@ -299,6 +329,58 @@ async def radio(ctx, url: str = ''):
                 player = await channel.connect()
 
                 player.play(FFmpegPCMAudio('https://streams.ilovemusic.de/iloveradio16.mp3'))
+
+            if label == "Hardstyle":
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    ephemeral=False,
+                    embed=em6
+                )
+
+                channel = client.get_channel(setupdata["channel-ids"])
+                
+                player = await channel.connect()
+
+                player.play(FFmpegPCMAudio('https://streams.ilovemusic.de/iloveradio21.mp3'))
+            
+            if label == "Music & Chill":
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    ephemeral=False,
+                    embed=em7
+                )
+
+                channel = client.get_channel(setupdata["channel-ids"])
+                
+                player = await channel.connect()
+
+                player.play(FFmpegPCMAudio('https://streams.ilovemusic.de/iloveradio10.mp3'))
+
+            if label == "X-Mas":
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    ephemeral=False,
+                    embed=em8
+                )
+
+                channel = client.get_channel(setupdata["channel-ids"])
+                
+                player = await channel.connect()
+
+                player.play(FFmpegPCMAudio('https://streams.ilovemusic.de/iloveradio8.mp3'))
+
+            if label == "Trashpop":
+                await res.respond(
+                    type=InteractionType.ChannelMessageWithSource,
+                    ephemeral=False,
+                    embed=em9
+                )
+
+                channel = client.get_channel(setupdata["channel-ids"])
+                
+                player = await channel.connect()
+
+                player.play(FFmpegPCMAudio('https://streams.ilovemusic.de/iloveradio19.mp3'))
         
         except discord.NotFound:
             print("error!")
